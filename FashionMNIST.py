@@ -94,7 +94,6 @@ def test(dataloader, model):
     with torch.no_grad():
         for X, y in dataloader:
             X, y = X.to(device), y.to(device)
-            print(f"Device tensor is stored on: {X.device}")
             pred = model(X)
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
